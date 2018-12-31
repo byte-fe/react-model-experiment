@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useStore } from 'react-modelx'
+import { useStore } from './_app'
 
 export default () => {
   const [state, actions] = useStore('Todo')
@@ -11,8 +11,8 @@ export default () => {
         <button onClick={() => actions.add(input)}>Add</button>
       </div>
       {JSON.stringify(state)}
-      {(state.todoList || []).map(todo => (
-        <div>
+      {(state.todoList || []).map((todo, index) => (
+        <div key={index}>
           {todo} <button onClick={() => actions.remove(todo)}> X </button>
         </div>
       ))}

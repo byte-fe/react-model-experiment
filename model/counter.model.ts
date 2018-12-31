@@ -24,7 +24,7 @@ const Model = {
     incrementTwiceUnValid: (state, actions, params) => {
       actions.increment(params)
       actions.increment(params)
-      return {}
+      return { newProperty: 'new' }
     }
   },
   state: initialState

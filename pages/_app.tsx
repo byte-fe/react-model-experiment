@@ -1,5 +1,5 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import App, { Container, NextAppContext } from 'next/app'
 import { Provider, registerModel } from 'react-modelx'
 
 import Layout from '../components/layout'
@@ -9,15 +9,17 @@ import Shared from '../model/shared.model'
 import Counter from '../model/counter.model'
 import Todo from '../model/todo.model'
 
-registerModel({
+const models = {
   Home,
   Shared,
   Counter,
   Todo
-})
+}
+
+export const { useStore } = registerModel(models)
 
 export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, router, ctx }: NextAppContext) {
     let pageProps = {}
 
     if (Component.getInitialProps) {

@@ -1,5 +1,6 @@
 import React from 'react'
-import { useStore, getState } from 'react-modelx'
+import { getState } from 'react-modelx'
+import { useStore } from './_app'
 
 const SingleHook = () => {
   const [state, actions] = useStore('Counter')
@@ -7,6 +8,7 @@ const SingleHook = () => {
     <>
       <div>
         <h2>There is a simple counter</h2>
+        <h3>state: {JSON.stringify(state)}</h3>
         <h3>Counter number: {state.counter}</h3>
       </div>
       <button onClick={() => actions.increment()}> + 1 </button>

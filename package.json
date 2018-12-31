@@ -4,7 +4,7 @@
   "description": "demo for react-modelx",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 3456",
     "build": "next build",
     "start": "next start"
   },
@@ -17,15 +17,17 @@
   "license": "MIT",
   "dependencies": {
     "@zeit/next-typescript": "^1.1.1",
+    "immer": "^1.9.3",
     "next": "^7.0.2",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
-    "react-modelx": "^1.0.0-alpha.3"
+    "react-modelx": "^1.0.7"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.1.6",
     "@types/next": "^7.0.5",
     "@types/react": "^16.7.11",
-    "@types/react-dom": "^16.0.11"
+    "@types/react-dom": "^16.0.11",
+    "typescript": "^3.2.2"
   }
 }

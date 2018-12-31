@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { useStore, connect, getState } from 'react-modelx'
+import { connect, getState } from 'react-modelx'
+import { useStore } from './_app'
 
 const Basic = () => {
   const [visible, setVisible] = useState(true)
