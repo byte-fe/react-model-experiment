@@ -1,7 +1,7 @@
 import React from 'react'
-import { useStore } from './_app'
 
-export default () => {
+export default (props: any) => {
+  const { useStore } = props
   const [state, actions] = useStore('Home')
   const [sharedState, sharedActions] = useStore('Shared')
 

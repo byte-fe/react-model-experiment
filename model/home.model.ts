@@ -14,7 +14,7 @@ type ActionsParamType = {
   get: undefined
 }
 
-const Model = {
+const Model: ModelType<StateType, ActionsParamType> = {
   actions: {
     increment: async (state, _, params) => {
       return {
@@ -49,9 +49,23 @@ const Model = {
       }
     }
   },
-  state: initialState
-} as ModelType<StateType, ActionsParamType>
-
+  state: initialState,
+  asyncState: async () => {
+    await new Promise((resolve, reject) =>
+      setTimeout(() => {
+        resolve()
+        console.log('resolve')
+      }, 3000)
+    )
+    console.log('getted')
+    return {
+      response: {
+        code: 200,
+        message: `${new Date().toLocaleString()} open light success`
+      }
+    }
+  }
+}
 export default Model
 
 type ConsumerActionsType = getConsumerActionsType<typeof Model.actions>

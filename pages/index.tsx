@@ -3,17 +3,16 @@ import Link from 'next/link'
 import { connect } from 'react-modelx'
 
 import { StateType, ActionType } from '../model/home.model'
-import J from './counter' // JS Version
 import H from './hooks'
 
 export default class App extends PureComponent {
   render() {
     return (
       <>
-        <T />
-        <J />
-        <H />
-        <H />
+        {/* <T {...this.props} /> */}
+        {/* <J {...this.props} /> */}
+        <H {...this.props} />
+        <H {...this.props} />
       </>
     )
   }

@@ -1,8 +1,7 @@
 import React from 'react'
-import { getState } from 'react-modelx'
-import { useStore } from './_app'
 
-const SingleHook = () => {
+const SingleHook = props => {
+  const { useStore } = props
   const [state, actions] = useStore('Counter')
   return (
     <>
@@ -31,8 +30,7 @@ const SingleHook = () => {
       </button>
       <button
         onClick={() => {
-          actions.increment().then(() => actions.increment())
-          console.log(JSON.stringify(getState('Counter')))
+          actions.increment().then(() => console.log('s'))
           console.log(JSON.stringify(getState('Counter')))
         }}
       >

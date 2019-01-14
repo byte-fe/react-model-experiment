@@ -29,7 +29,12 @@ const Model = {
       }
     }
   },
-  state: initialState
+  state: initialState,
+  asyncState: async () => {
+    return {
+      todoList: ['eat', 'drink', 'play', 'sleep']
+    }
+  }
 } as ModelType<StateType, ActionsParamType>
 
 export default Model

@@ -17,6 +17,9 @@ const Layout: React.FC = props => {
         <Link href="todo">
           <span>Todo List Demo</span>
         </Link>
+        <Link href="benchmark">
+          <span>Benchmark</span>
+        </Link>
       </div>
       <div style={styles.content}>{props.children}</div>
       <style>

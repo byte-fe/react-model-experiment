@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+// import { ModelProps } from 'model/index.model'
+import { useStore } from './_app'
 
-export default props => {
-  const { useStore } = props
+// export default (props: ModelProps) => {
+// const { useStore } = props
+export default () => {
   const [state, actions] = useStore('Todo')
   const [input, setInput] = useState('')
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import App, { Container, NextAppContext } from 'next/app'
-import { Provider, Model } from 'react-modelx'
+import { Container, NextAppContext, AppProps, DefaultAppIProps } from 'next/app'
+import { Model } from 'react-modelx'
 
 import Layout from '../components/layout'
 
@@ -8,6 +8,7 @@ import Home from '../model/home.model'
 import Shared from '../model/shared.model'
 import Counter from '../model/counter.model'
 import Todo from '../model/todo.model'
+import { RouterProps } from 'next/router'
 
 const models = {
   Home,
@@ -16,29 +17,34 @@ const models = {
   Todo
 }
 
-export const { useStore } = Model(models)
+let initialModel: any
 
-export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }: NextAppContext) {
-    let pageProps = {}
+export const { getInitialState, useStore, getState } = Model(models)
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    return { pageProps }
+const MyApp = (props: AppProps & DefaultAppIProps & RouterProps) => {
+  if (!(process as any).browser) {
+    initialModel = Model(models, (props as any).initialModels) // TypeScript Support will release later.
+  } else {
+    initialModel =
+      (props as any).initialModel || Model(models, (props as any).initialModels)
   }
+  const { Component, pageProps, router } = props
+  return (
+    <Container>
+      <Layout>
+        <Component {...pageProps} useStore={useStore} getState={getState} />
+      </Layout>
+    </Container>
+  )
+}
 
-  render() {
-    const { Component, pageProps } = this.props
-    return (
-      <Container>
-        <Provider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Provider>
-      </Container>
-    )
+MyApp.getInitialProps = async (context: NextAppContext) => {
+  if (!(process as any).browser) {
+    const initialModels = await getInitialState()
+    return { initialModels }
+  } else {
+    return { initialModel }
   }
 }
+
+export default MyApp
