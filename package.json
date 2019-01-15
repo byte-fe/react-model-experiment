@@ -29,7 +29,7 @@
     "@types/react": "^16.7.11",
     "@types/react-dom": "^16.0.11",
     "lodash": "^4.17.11",
-    "react-modelx": "^2.0.0-alpha.2",
+    "react-modelx": "^2.0.2-unstable.0",
     "typescript": "^3.2.2"
   }
 }

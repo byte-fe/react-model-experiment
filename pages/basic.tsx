@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
+import { useStore, getState } from '../model/index.model'
 
-const Basic = (props: any) => {
+const Basic = () => {
   const [visible, setVisible] = useState(true)
   return (
     <>
@@ -10,7 +11,7 @@ const Basic = (props: any) => {
       </button>
       <div style={{ flexDirection: 'row', display: 'flex' }}>
         <div style={{ padding: '2rem' }}>
-          {visible && <BasicHook {...props} />}
+          {visible && <BasicHook />}
           <pre style={{ backgroundColor: '#00066', padding: '0.5rem' }}>
             <code>
               {`
@@ -83,8 +84,7 @@ class BasicClass extends React.Component {
   )
 }
 
-const BasicHook = (props: any) => {
-  const { useStore, getState } = props
+const BasicHook = () => {
   const [state, actions] = useStore('Counter')
   useEffect(() => {
     console.log('some mounted actions from BasicHooks')

@@ -11,8 +11,8 @@ export default class App extends PureComponent {
       <>
         {/* <T {...this.props} /> */}
         {/* <J {...this.props} /> */}
-        <H {...this.props} />
-        <H {...this.props} />
+        <H />
+        <H />
       </>
     )
   }

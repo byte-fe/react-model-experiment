@@ -4,35 +4,30 @@ import { Model } from 'react-modelx'
 
 import Layout from '../components/layout'
 
-import Home from '../model/home.model'
-import Shared from '../model/shared.model'
-import Counter from '../model/counter.model'
-import Todo from '../model/todo.model'
+import { models, getInitialState, ModelsProp } from '../model/index.model'
 import { RouterProps } from 'next/router'
 
-const models = {
-  Home,
-  Shared,
-  Counter,
-  Todo
+let persistModel: any
+
+interface ModelsProps {
+  initialModels: ModelsProp
+  persistModel: ModelsProp
 }
 
-let initialModel: any
-
-export const { getInitialState, useStore, getState } = Model(models)
-
-const MyApp = (props: AppProps & DefaultAppIProps & RouterProps) => {
+const MyApp = (
+  props: AppProps & DefaultAppIProps & RouterProps & ModelsProps
+) => {
   if (!(process as any).browser) {
-    initialModel = Model(models, (props as any).initialModels) // TypeScript Support will release later.
+    persistModel = Model(models, props.initialModels) // TypeScript Support will release later.
   } else {
-    initialModel =
-      (props as any).initialModel || Model(models, (props as any).initialModels)
+    persistModel =
+      (props as any).persistModel || Model(models, props.initialModels)
   }
   const { Component, pageProps, router } = props
   return (
     <Container>
       <Layout>
-        <Component {...pageProps} useStore={useStore} getState={getState} />
+        <Component {...pageProps} />
       </Layout>
     </Container>
   )
@@ -43,7 +38,7 @@ MyApp.getInitialProps = async (context: NextAppContext) => {
     const initialModels = await getInitialState()
     return { initialModels }
   } else {
-    return { initialModel }
+    return { persistModel }
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
+import { useStore } from '../model/index.model'
 
 const SingleHook = props => {
-  const { useStore } = props
   const [state, actions] = useStore('Counter')
   return (
     <>
