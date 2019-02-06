@@ -24,6 +24,7 @@ const Model: ModelType<StateType, ActionsParamType> = {
     openLight: async (state, actions) => {
       await actions.increment(1)
       actions.get()
+      await actions.get()
       await actions.increment(1)
       await actions.increment(1)
       await actions.increment(1)

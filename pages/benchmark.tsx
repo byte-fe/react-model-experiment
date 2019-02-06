@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useStore } from '../model/index.model'
+import { useStore, getInitialState } from '../model/index.model'
 
-export default () => {
+const Benchmark = () => {
   const [state, actions] = useStore('Todo')
   const [input, setInput] = useState('')
   return (
@@ -20,3 +20,9 @@ export default () => {
     </>
   )
 }
+
+Benchmark.getInitialProps = async () => {
+  return await getInitialState({ modelName: 'Todo' })
+}
+
+export default Benchmark

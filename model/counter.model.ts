@@ -2,6 +2,8 @@ const initialState = {
   counter: 0
 }
 
+const timeout = () => new Promise(resolve => setTimeout(() => resolve(), 3000))
+
 type StateType = typeof initialState
 type ActionsParamType = {
   increment: number | undefined
@@ -11,7 +13,7 @@ type ActionsParamType = {
 
 const Model: ModelType<StateType, ActionsParamType> = {
   actions: {
-    increment: (state, _, params) => {
+    increment: async (state, _, params) => {
       // console.log(state)
       return {
         counter: state.counter + (params || 1)
@@ -28,7 +30,12 @@ const Model: ModelType<StateType, ActionsParamType> = {
       return {}
     }
   },
-  state: initialState
+  state: initialState,
+  asyncState: async () => {
+    return {
+      counter: 1000
+    }
+  }
 }
 
 export default Model

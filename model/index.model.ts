@@ -20,5 +20,4 @@ console.log(
 )
 
 export const { getInitialState, useStore, getState } = Model(models)
-export type ModelsProp = typeof models
-export type ModelProps = ModelsProps<typeof models>
+export type Models = typeof models

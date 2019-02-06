@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStore } from '../model/index.model'
+import { useStore, getState } from '../model/index.model'
 
 const SingleHook = props => {
   const [state, actions] = useStore('Counter')
@@ -30,7 +30,11 @@ const SingleHook = props => {
       </button>
       <button
         onClick={() => {
-          actions.increment().then(() => console.log('s'))
+          actions
+            .increment()
+            .then(() =>
+              console.log('after updating', JSON.stringify(getState('Counter')))
+            )
           console.log(JSON.stringify(getState('Counter')))
         }}
       >
