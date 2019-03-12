@@ -9,6 +9,8 @@ npm i
 npm run dev
 ```
 
+![Debug](./images/debug.jpg)
+
 ## Feature used
 
 - Base Api (useStore)
