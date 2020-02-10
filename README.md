@@ -1,6 +1,6 @@
-# react-modelx-experiment
+# react-model-experiment
 
-The Demo for Next.js + react-modelx work around.
+The Demo for Next.js + react-model work around.
 
 ## How to run
 
@@ -9,7 +9,7 @@ npm i
 npm run dev
 ```
 
-![Debug](./images/debug.jpg)
+<!-- ![Debug](./images/debug.jpg) -->
 
 ## Feature used
 
