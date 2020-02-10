@@ -35,7 +35,7 @@ const Model: ModelType<StateType, ActionsParamType> = {
       return { light: !state.light }
     },
     get: async () => {
-      await new Promise((resolve, reject) =>
+      await new Promise(resolve =>
         setTimeout(() => {
           resolve()
           console.log('resolve')
@@ -52,7 +52,7 @@ const Model: ModelType<StateType, ActionsParamType> = {
   },
   state: initialState,
   asyncState: async () => {
-    await new Promise((resolve, reject) =>
+    await new Promise(resolve =>
       setTimeout(() => {
         resolve()
         console.log('resolve')
@@ -73,4 +73,5 @@ type ConsumerActionsType = getConsumerActionsType<typeof Model.actions>
 type ConsumerType = { actions: ConsumerActionsType; state: StateType }
 type ActionType = ConsumerActionsType
 
+// @ts-ignore
 export { ConsumerType, StateType, ActionType }

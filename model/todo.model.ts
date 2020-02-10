@@ -39,8 +39,9 @@ const model: ModelType<StateType, ActionsParamType> = {
 
 export default Model(model)
 
-type ConsumerActionsType = getConsumerActionsType<typeof Model.actions>
+type ConsumerActionsType = getConsumerActionsType<typeof model.actions>
 type ConsumerType = { actions: ConsumerActionsType; state: StateType }
 type ActionType = ConsumerActionsType
 
+// @ts-ignore
 export { ConsumerType, StateType, ActionType }

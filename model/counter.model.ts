@@ -2,8 +2,6 @@ const initialState = {
   counter: 0
 }
 
-const timeout = () => new Promise(resolve => setTimeout(() => resolve(), 3000))
-
 type StateType = typeof initialState
 type ActionsParamType = {
   increment: number | undefined
@@ -41,4 +39,5 @@ type ConsumerActionsType = getConsumerActionsType<typeof Model.actions>
 type ConsumerType = { actions: ConsumerActionsType; state: StateType }
 type ActionType = ConsumerActionsType
 
+// @ts-ignore
 export { ConsumerType, StateType, ActionType }

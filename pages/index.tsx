@@ -37,13 +37,13 @@ class TSCounter extends PureComponent<
         </Link>
         <div>TS Counter</div>
         <div>states - {JSON.stringify(this.props.state)}</div>
-        <button onClick={e => this.props.actions.increment(3)}>
+        <button onClick={() => this.props.actions.increment(3)}>
           increment
         </button>
-        <button onClick={e => this.props.actions.openLight()}>
+        <button onClick={() => this.props.actions.openLight()}>
           Light Switch
         </button>
-        <button onClick={e => this.props.actions.get()}>Get Response</button>
+        <button onClick={() => this.props.actions.get()}>Get Response</button>
         <div>message: {JSON.stringify(this.props.state.response)}</div>
       </>
     )
@@ -51,3 +51,4 @@ class TSCounter extends PureComponent<
 }
 
 const T = connect('Home', mapProps)(TSCounter)
+T

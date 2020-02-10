@@ -38,4 +38,5 @@ type ConsumerActionsType = getConsumerActionsType<typeof Model.actions>
 type ConsumerType = { actions: ConsumerActionsType; state: StateType }
 type ActionType = ConsumerActionsType
 
+// @ts-ignore
 export { ConsumerType, StateType, ActionType }
