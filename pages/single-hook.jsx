@@ -30,15 +30,13 @@ const SingleHook = props => {
       </button>
       <button
         onClick={() => {
-          actions
-            .increment()
-            .then(() =>
-              console.log('after updating', JSON.stringify(getState('Counter')))
-            )
+          actions.increment().then(() => {
+            console.log('after updating', JSON.stringify(getState('Counter')))
+          })
           console.log(JSON.stringify(getState('Counter')))
         }}
       >
-        onClick run two +1 by action.fun().then(...)
+        onClick run single +1 by action.fun().then(...)
       </button>
       <button
         onClick={() => {

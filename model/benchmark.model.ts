@@ -1,3 +1,5 @@
+import { Model } from 'react-model'
+
 type Todo = {
   id: number
   name: string
@@ -12,16 +14,14 @@ type ActionsParamType = {
   remove: number
 }
 
-const Model: ModelType<StateType, ActionsParamType> = {
+const model: ModelType<StateType, ActionsParamType> = {
   actions: {
-    add: async (state, _, params) => {
-      const newState = state
-      newState.todoList.push(params)
-      return {
-        ...newState
+    add: async params => {
+      return (state: StateType) => {
+        state.todoList.push(params)
       }
     },
-    remove: (state, _, index) => {
+    remove: index => {
       return state => {
         delete state.todoList[index]
       }
@@ -40,4 +40,4 @@ const Model: ModelType<StateType, ActionsParamType> = {
   }
 }
 
-export default Model
+export default Model(model)

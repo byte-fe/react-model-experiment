@@ -13,21 +13,18 @@ type ActionsParamType = {
 
 const Model: ModelType<StateType, ActionsParamType> = {
   actions: {
-    increment: async (state, _, params) => {
-      // console.log(state)
-      return {
-        counter: state.counter + (params || 1)
+    increment: params => {
+      return state => {
+        state.counter += params || 1
       }
     },
-    incrementTwice: async (state, actions, params) => {
+    incrementTwice: async (params, { actions }) => {
       await actions.increment(params)
       await actions.increment(params)
-      return {}
     },
-    incrementTwiceUnValid: (state, actions, params) => {
+    incrementTwiceUnValid: (params, { actions }) => {
       actions.increment(params)
       actions.increment(params)
-      return {}
     }
   },
   state: initialState,

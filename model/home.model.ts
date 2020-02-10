@@ -16,12 +16,12 @@ type ActionsParamType = {
 
 const Model: ModelType<StateType, ActionsParamType> = {
   actions: {
-    increment: async (state, _, params) => {
-      return {
-        counter: state.counter + (params || 1)
+    increment: params => {
+      return state => {
+        state.counter += params || 1
       }
     },
-    openLight: async (state, actions) => {
+    openLight: async (_, { state, actions }) => {
       await actions.increment(1)
       actions.get()
       await actions.get()

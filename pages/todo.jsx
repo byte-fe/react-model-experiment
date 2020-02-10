@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useStore } from '../model/index.model'
-import { getState } from 'react-modelx'
+import { getState } from 'react-model'
 
 const Child = props => {
   // const state = getState('Todo')

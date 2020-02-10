@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, NextAppContext, AppProps, DefaultAppIProps } from 'next/app'
-import { Model } from 'react-modelx'
+import { Model } from 'react-model'
 
 import Layout from '../components/layout'
 

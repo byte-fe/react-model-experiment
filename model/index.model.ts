@@ -3,7 +3,7 @@ import Counter from './counter.model'
 import BenchMark from './benchmark.model'
 import Todo from './todo.model'
 import Shared from './shared.model'
-import { Model } from 'react-modelx'
+import { Model } from 'react-model'
 
 export const models = {
   Home,

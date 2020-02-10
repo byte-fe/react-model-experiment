@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import Link from 'next/link'
-import { connect } from 'react-modelx'
+import { connect } from 'react-model'
 
 import { StateType, ActionType } from '../model/home.model'
 import H from './hooks'
@@ -50,7 +50,4 @@ class TSCounter extends PureComponent<
   }
 }
 
-const T = connect(
-  'Home',
-  mapProps
-)(TSCounter)
+const T = connect('Home', mapProps)(TSCounter)

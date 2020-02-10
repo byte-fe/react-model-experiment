@@ -1,3 +1,5 @@
+import { Model } from 'react-model'
+
 const initialState = {
   todoList: ['eat', 'sleep', 'study']
 }
@@ -9,21 +11,19 @@ type ActionsParamType = {
   clear: undefined
 }
 
-const Model = {
+const model: ModelType<StateType, ActionsParamType> = {
   actions: {
-    add: async (state, _, params) => {
-      const newState = state
-      newState.todoList.push(params)
-      return {
-        ...newState
+    add: params => {
+      return state => {
+        state.todoList.push(params)
       }
     },
-    remove: async (state, _, params) => {
+    remove: async (params, { state }) => {
       return {
         todoList: state.todoList.filter(todo => todo !== params)
       }
     },
-    clear: (state, actions, params) => {
+    clear: () => {
       return {
         todoList: []
       }
@@ -35,9 +35,9 @@ const Model = {
       todoList: ['eat', 'drink', 'play', 'sleep']
     }
   }
-} as ModelType<StateType, ActionsParamType>
+}
 
-export default Model
+export default Model(model)
 
 type ConsumerActionsType = getConsumerActionsType<typeof Model.actions>
 type ConsumerType = { actions: ConsumerActionsType; state: StateType }

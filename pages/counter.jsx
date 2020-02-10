@@ -1,15 +1,12 @@
 import React, { PureComponent } from 'react'
-import { Provider, connect } from 'react-modelx'
+import { Provider, connect } from 'react-model'
 
 const mapProps = ({ light, counter }) => ({
   lightStatus: light ? 'open' : 'close',
   counter
 })
 
-@connect(
-  'Home',
-  mapProps
-)
+@connect('Home', mapProps)
 export default class JSCounter extends PureComponent {
   render() {
     return (
